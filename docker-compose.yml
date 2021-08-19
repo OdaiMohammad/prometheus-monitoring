@@ -13,6 +13,28 @@ services:
       - $PWD/configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
 
+  grafana:
+    image: grafana/grafana:latest
+    restart: unless-stopped
+    container_name: grafana
+    networks:
+      - monitoring-net
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - grafana_log:/var/log/grafana
+      - grafana_provisioning:/etc/grafana/provisioning
+
+
+volumes:
+  grafana_data:
+    name: grafana_data
+  grafana_log:
+    name: grafana_log
+  grafana_provisioning:
+    name: grafana_provisioning
+
 networks:
   monitoring-net:
     name: monitoring-net
