@@ -1,7 +1,18 @@
 version: "3.9"
 
 services:
+  prometheus:
+    image: prom/prometheus
+    restart: unless-stopped
+    container_name: prometheus
+    networks:
+      - monitoring-net
+    ports:
+      - 9090:9090
+    volumes:
+      - $PWD/configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
-volumes:
 
 networks:
+  monitoring-net:
+    name: monitoring-net
