@@ -6,10 +6,7 @@ services:
     restart: unless-stopped
     container_name: prometheus
     networks:
-      - monitoring-net
-      - lookup
-    ports:
-      - 9090:9090
+      - stg0
     volumes:
       - $PWD/configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
@@ -19,9 +16,8 @@ services:
     restart: unless-stopped
     container_name: grafana
     networks:
-      - monitoring-net
-    ports:
-      - 3000:3000
+      stg0:
+        ipv4_address: 172.30.0.71
     volumes:
       - grafana_data:/var/lib/grafana
       - grafana_log:/var/log/grafana
@@ -60,8 +56,6 @@ volumes:
     name: grafana_provisioning
 
 networks:
-  monitoring-net:
-    name: monitoring-net
-  lookup:
-    name: lookup
+  stg0:
+    name: stg0
     external: true
