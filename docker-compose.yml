@@ -44,14 +44,6 @@ services:
       - /var/lib/docker/containers:/var/lib/docker/containers
     command: -config.file=/etc/promtail/promtail-config.yaml -print-config-stderr
 
-
-  node-exporter:
-    image: prom/node-exporter:latest
-    container_name: node-exporter
-    restart: unless-stopped
-    networks:
-      - stg0
-
   cadvisor:
     image: google/cadvisor:latest
     container_name: cadvisor
