@@ -27,3 +27,16 @@ scrape_configs:
 
     static_configs:
       - targets: ["localhost:9090"]
+
+
+  - job_name: "lookup requests distributor"
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["lookup-requests-distributor:8080"]
+
+  - job_name: "lookup requests manager"
+    metrics_path: '/actuator/prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["lookup-requests-manager:8080"]

@@ -7,6 +7,7 @@ services:
     container_name: prometheus
     networks:
       - monitoring-net
+      - lookup
     ports:
       - 9090:9090
     volumes:
@@ -26,6 +27,29 @@ services:
       - grafana_log:/var/log/grafana
       - grafana_provisioning:/etc/grafana/provisioning
 
+  loki:
+    image: grafana/loki:latest
+    restart: unless-stopped
+    container_name: loki
+    networks:
+      - monitoring-net
+    ports:
+      - 3100:3100
+    volumes:
+      - $PWD/configs/loki/loki-config.yaml:/etc/loki/loki-config.yaml
+    command: -config.file=/etc/loki/loki-config.yaml
+
+  promtail:
+    image: grafana/promtail:latest
+    restart: unless-stopped
+    container_name: promtail
+    networks:
+      - monitoring-net
+    volumes:
+      - $PWD/configs/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+      - /var/lib/docker/containers:/var/lib/docker/containers
+    command: -config.file=/etc/promtail/promtail-config.yaml -print-config-stderr
+
 
 volumes:
   grafana_data:
@@ -38,3 +62,6 @@ volumes:
 networks:
   monitoring-net:
     name: monitoring-net
+  lookup:
+    name: lookup
+    external: true

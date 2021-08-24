@@ -1,0 +1,36 @@
+- targets: ["3d7e0a254fa6"]
+  labels:
+    container_name: "promtail"
+- targets: ["4376d6dcf99e"]
+  labels:
+    container_name: "prometheus"
+- targets: ["50221d16c6e9"]
+  labels:
+    container_name: "loki"
+- targets: ["646e84dac97c"]
+  labels:
+    container_name: "grafana"
+- targets: ["481eda01b7dc"]
+  labels:
+    container_name: "lookup-requests-distributor"
+- targets: ["32ccb40d98de"]
+  labels:
+    container_name: "lookup-requests-manager"
+- targets: ["bdfae4ee75e9"]
+  labels:
+    container_name: "kafdrop"
+- targets: ["81a2ee8a8001"]
+  labels:
+    container_name: "schema"
+- targets: ["0a42df2f74ec"]
+  labels:
+    container_name: "kafka"
+- targets: ["db3429e2a227"]
+  labels:
+    container_name: "zipkin"
+- targets: ["2653d8c3b14d"]
+  labels:
+    container_name: "connect"
+- targets: ["078b5e230015"]
+  labels:
+    container_name: "zookeeper"

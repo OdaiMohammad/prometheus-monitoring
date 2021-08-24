@@ -1,0 +1,1 @@
+docker ps --format '- targets: ["{{.ID}}"]\n  labels:\n    container_name: "{{.Names}}"' > $PWD/configs/promtail/promtail-targets.yaml
