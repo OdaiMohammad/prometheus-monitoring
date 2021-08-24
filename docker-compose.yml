@@ -61,6 +61,17 @@ services:
       - /dev/kmsg
 
 
+  telegram-notifier:
+    image: poma/docker-telegram-notifier
+    container_name: telegram-notifier
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      TELEGRAM_NOTIFIER_BOT_TOKEN: 1999930776:AAGFhLBslorNnYizHre0ZoFsYFeEOOz1HBg
+      TELEGRAM_NOTIFIER_CHAT_ID: -1001363573288
+
+
 volumes:
   grafana_data:
     name: grafana_data
