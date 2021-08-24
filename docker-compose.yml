@@ -28,9 +28,7 @@ services:
     restart: unless-stopped
     container_name: loki
     networks:
-      - monitoring-net
-    ports:
-      - 3100:3100
+      - stg0
     volumes:
       - $PWD/configs/loki/loki-config.yaml:/etc/loki/loki-config.yaml
     command: -config.file=/etc/loki/loki-config.yaml
@@ -40,7 +38,7 @@ services:
     restart: unless-stopped
     container_name: promtail
     networks:
-      - monitoring-net
+      - stg0
     volumes:
       - $PWD/configs/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
       - /var/lib/docker/containers:/var/lib/docker/containers
