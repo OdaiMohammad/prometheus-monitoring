@@ -45,6 +45,22 @@ services:
     command: -config.file=/etc/promtail/promtail-config.yaml -print-config-stderr
 
 
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    restart: unless-stopped
+
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    restart: unless-stopped
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+
+
 volumes:
   grafana_data:
     name: grafana_data
