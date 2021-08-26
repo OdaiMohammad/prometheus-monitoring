@@ -18,6 +18,8 @@ services:
     networks:
       stg0:
         ipv4_address: 172.30.0.71
+    environment:
+      GF_SERVER_ROOT_URL: https://stage-grafana.santechture.com/
     volumes:
       - grafana_data:/var/lib/grafana
       - grafana_log:/var/log/grafana
