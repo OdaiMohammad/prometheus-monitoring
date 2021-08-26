@@ -36,11 +36,9 @@ scrape_configs:
         labels:
           group: 'cadvisor'
 
-  - job_name: "kafka"
-      static_configs:
-        - targets:
-            - "lookup-kafka-1:1234"
-            - "lookup-kafka-2:1234"
-            - "lookup-kafka-3:1234"
-          labels:
-            env: "stage"
+  - job_name: "lookup-kafka"
+    scrape_interval: 5s
+    static_configs:
+      - targets: ["lookup-kafka-1:1234","lookup-kafka-2:1234","lookup-kafka-3:1234"]
+        labels:
+          group: 'lookup-kafka'
