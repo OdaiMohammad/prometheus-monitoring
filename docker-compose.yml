@@ -18,7 +18,7 @@ services:
     networks:
       - nt0
     volumes:
-      - $PWD/configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
 
   grafana:
@@ -42,7 +42,7 @@ services:
     networks:
       - nt0
     volumes:
-      - $PWD/configs/loki/loki-config.yaml:/etc/loki/loki-config.yaml
+      - ./configs/loki/loki-config.yaml:/etc/loki/loki-config.yaml
     command: -config.file=/etc/loki/loki-config.yaml
 
   promtail:
@@ -52,7 +52,7 @@ services:
     networks:
       - nt0
     volumes:
-      - $PWD/configs/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
+      - ./configs/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
       - /var/lib/docker/containers:/var/lib/docker/containers
     command: -config.file=/etc/promtail/promtail-config.yaml -print-config-stderr
 
