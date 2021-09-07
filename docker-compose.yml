@@ -27,7 +27,7 @@ services:
     container_name: grafana
     networks:
       nt0:
-        ipv4_address: 172.30.0.71
+        ipv4_address: 172.50.0.71
     environment:
       GF_SERVER_ROOT_URL: https://stage-grafana.santechture.com/
     volumes:
