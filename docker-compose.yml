@@ -1,6 +1,16 @@
 version: "3.9"
 
 services:
+  telegram-notifier:
+    image: poma/docker-telegram-notifier
+    container_name: telegram-notifier
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      TELEGRAM_NOTIFIER_BOT_TOKEN: 1995841141:AAEZ5xwhHRVyPFwcR8VmXccDCWNAae3JyhI
+      TELEGRAM_NOTIFIER_CHAT_ID: -1001500197527
+
   prometheus:
     image: prom/prometheus
     restart: unless-stopped
@@ -61,17 +71,6 @@ services:
     privileged: true
     devices:
       - /dev/kmsg
-
-
-  telegram-notifier:
-    image: poma/docker-telegram-notifier
-    container_name: telegram-notifier
-    restart: unless-stopped
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    environment:
-      TELEGRAM_NOTIFIER_BOT_TOKEN: 1995841141:AAEZ5xwhHRVyPFwcR8VmXccDCWNAae3JyhI
-      TELEGRAM_NOTIFIER_CHAT_ID: -1001500197527
 
 
 volumes:
