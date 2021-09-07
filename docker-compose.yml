@@ -16,7 +16,7 @@ services:
     restart: unless-stopped
     container_name: prometheus
     networks:
-      - stg0
+      - nt0
     volumes:
       - $PWD/configs/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
     container_name: grafana
     networks:
-      stg0:
+      nt0:
         ipv4_address: 172.30.0.71
     environment:
       GF_SERVER_ROOT_URL: https://stage-grafana.santechture.com/
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
     container_name: loki
     networks:
-      - stg0
+      - nt0
     volumes:
       - $PWD/configs/loki/loki-config.yaml:/etc/loki/loki-config.yaml
     command: -config.file=/etc/loki/loki-config.yaml
@@ -50,7 +50,7 @@ services:
     restart: unless-stopped
     container_name: promtail
     networks:
-      - stg0
+      - nt0
     volumes:
       - $PWD/configs/promtail/promtail-config.yaml:/etc/promtail/promtail-config.yaml
       - /var/lib/docker/containers:/var/lib/docker/containers
@@ -67,7 +67,7 @@ services:
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
     networks:
-      - stg0
+      - nt0
     privileged: true
     devices:
       - /dev/kmsg
@@ -82,6 +82,6 @@ volumes:
     name: grafana_provisioning
 
 networks:
-  stg0:
-    name: stg0
+  nt0:
+    name: nt0
     external: true
