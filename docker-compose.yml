@@ -70,8 +70,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
-      TELEGRAM_NOTIFIER_BOT_TOKEN: 1999930776:AAGFhLBslorNnYizHre0ZoFsYFeEOOz1HBg
-      TELEGRAM_NOTIFIER_CHAT_ID: -1001363573288
+      TELEGRAM_NOTIFIER_BOT_TOKEN: 1995841141:AAEZ5xwhHRVyPFwcR8VmXccDCWNAae3JyhI
+      TELEGRAM_NOTIFIER_CHAT_ID: -1001500197527
 
 
 volumes:
