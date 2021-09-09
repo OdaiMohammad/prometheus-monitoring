@@ -36,9 +36,7 @@ scrape_configs:
         labels:
           group: 'cadvisor'
 
-  - job_name: "lookup-kafka"
+  - job_name: 'nodeexporter'
     scrape_interval: 5s
     static_configs:
-      - targets: ["lookup-kafka-1:1234","lookup-kafka-2:1234","lookup-kafka-3:1234"]
-        labels:
-          group: 'lookup-kafka'
+      - targets: ['nodeexporter:9100']
